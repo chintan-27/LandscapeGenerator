@@ -4,25 +4,46 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="landscape.css">
-    
-    <title>Landscape Generator</title>
+    <script defer src="activePage.js"></script>
+    <link rel="stylesheet" href="web.css">
+    <script src="./landscape.js"></script>
+    <title>ColorScape</title>
 </head>
-<body>
-    <h1>Landscape Generator</h1>
-    <h3>Choose your landscape color</h3>
-    <input type="color" value="#e0ffee" id="colorPicker">
-    <b>Current Color Code: <button class = "btn">Color<code id="colorCode"></code></button></b>
-
-    <div class="colorBox">
-        <div class="box">Color 1<code id="colorCode"></code></div>  
-        <div class="box">Color 2</div>     
-        <div class="box">Color 3</div> 
-        <div class="box">Color 4</div> 
-        <div class="box">Color 5</div> 
+<body id = "container">
+    <header>
+    <h1>ColorScape</h1>
+    <div class = "navbar">
+        <ul class = "navbars">
+            <li class = "link"><a href="#home">HOME</a></li>
+            <li class = "link"><a href="#color">COLOR</a></li>
+            <li class = "link"><a href="#about">ABOUT</a></li>
+        </ul>
     </div>
+    </header>
+    <section id = "home">
+        <h2 class ="title">ColorScape</h2>
+        <p class = "desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis commodi reprehenderit quos alias accusamus, ea quasi modi nihil nemo dolore, nisi quae amet at incidunt mollitia culpa aliquid, accusantium placeat?</p>
+        <footer>Team member: Seoyoung, Chintan...</footer>
+    </section>
+
+    <section id = "color">
+        <h3>Choose your landscape color</h3>
+        <input type="color" value="#e0ffee" id="colorPicker">
+        <b>Current Color Code: <button class = "btn">Color<code id="colorCode"></code></button></b>
+    
+        <div class="colorBox">
+            <ul class="boxList">
+                <li class="box" id="box1"></li>
+                <li class="box" id="box2"></li>
+                <li class="box" id="box3"></li>
+                <li class="box" id="box4"></li>
+                <li class="box" id="box5"></li>
+            </ul>
+        </div>
+    </section>
+    
+    <section id = "about">
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Temporibus architecto distinctio, numquam provident in rem obcaecati alias sint nam sapiente vitae eos commodi molestias, asperiores molestiae odit. Architecto, enim alias.</p>
+    </section>
 </body>
 </html>

@@ -1,19 +1,122 @@
-h1 {
-    font-size: 3rem;
-}
-
-h3 {
-    font-size: 25px;
-    color: grey;
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
 }
 
 body {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
+    background-color: #333;
+    color: white;
+}
+
+h1{
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+#container {
+    max-width: 700px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+    padding: 1.2rem 0;
+    position: sticky;
+}
+
+.navbars {
+    display: flex;
+}
+
+.link {
+    list-style-type: none;
+    margin-left: 1.5rem;
+}
+
+header ul li a {
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 800;
+    padding-bottom: 5px;
+    color: gray;
+}
+
+header ul li:focus a{
+    border-bottom: 5px solid;
+    color: white;
+}
+
+header ul li a:hover {
+    border-bottom: 5px solid;
+    color: white;
+}
+
+@media screen and (max-width: 500){
+    header{
+        flex-direction: column;
+    }
+    
+}
+
+section{
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: 100%;
+}
+
+/*home page*/
+#home p{
+    margin-bottom: 2rem;
+}
+
+h2.title {
     text-align: center;
-    font-family: 'Kanit', sans-serif;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    font-weight: 900;
+  }
+
+
+.section {
+    padding: 0 3rem;
+    text-align: center;
+}
+
+
+#home p:first-child {
+    font-size: 2rem;
+    font-weight: 900;
+}
+
+.section p:last-of-type {
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+
+footer {
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+    color: gray;
+}
+
+
+/*color page*/
+h3 {
+    font-size: 25px;
+    color: grey;
 }
 
 input[type="color"] {
@@ -24,44 +127,6 @@ input[type="color"] {
     cursor: pointer;
     border: 2px solid #000;
     border-radius: 3px;
-}
-
-.btn {
-    font-size: 1.2rem;
-    padding: 5px 40px;
-    border: 2px solid #000;
-    border-radius: 3px;
-    background-color: transparent;
-    text-transform: uppercase;
-    letter-spacing: 5px;
-    font-weight: bold;
-    position: relative;
-    transition: all 0.4s;
-    overflow: hidden;    
-}
-
-.btn:focus {
-    outline: none;
-}
-
-.btn::before {
-    content: "";
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    background-color: #e0ffee;
-    top: 100%;
-    left: 0;
-    transition: all 0.4s;
-    z-index: -1;
-}
-
-.btn:hover::before {
-    transform: translateY(-100%);
-}
-
-.btn:hover {
-    color: #3c3e70;
 }
 
 code {
@@ -88,4 +153,23 @@ b {
 
 .colorBox{
     display: flex;
+}
+
+.boxList {
+    list-style: none;
+    padding: 24px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 0px;
+}
+
+.boxList li {
+    width: 24px;
+    height: 24px;    
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.boxList li:hover {
+    transform: scale(1.1);
 }
