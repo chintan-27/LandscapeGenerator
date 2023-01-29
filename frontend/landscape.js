@@ -96,7 +96,7 @@ async function submit() {
 
   await postData("http://127.0.0.1:5000/predict", data);
   document.getElementById("result").innerHTML =
-    "<img src='http://127.0.0.1:5000/static/images/output.png', class='result-img'/>";
+    "<img src='./../flask_API/static/images/output.png', class='result-img'/>";
   document.getElementById("result").style.background = "#FFFFFF";
   document.getElementById("result").style.border = "None";
 }

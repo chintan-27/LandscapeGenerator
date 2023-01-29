@@ -89,17 +89,10 @@ def predict(colors, latent_dim = 200, outputPath = "images/Output.png"):
     return outputPath
 
 #create instance of Flask app
-PEOPLE_FOLDER = os.path.join('static', 'images')
+# PEOPLE_FOLDER = os.path.join('static', 'images')
 app = Flask(__name__)
-app.config['UPLOAD_FOLDER'] = PEOPLE_FOLDER
+# app.config['UPLOAD_FOLDER'] = PEOPLE_FOLDER
 
-
-#decorator 
-@app.route('/')
-@app.route('/index')
-def show_index():
-    full_filename = os.path.join(app.config['UPLOAD_FOLDER'], 'Output.png')
-    return render_template("index.html", user_image = full_filename)
 
   
 @app.route("/predict", methods=['POST'])
