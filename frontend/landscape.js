@@ -94,9 +94,9 @@ async function submit() {
   //   colors = colors + "]";
   let data = { colors: colors };
 
-  await postData("http://rrhsj.pythonanywhere.com/predict", data);
+  await postData("http://127.0.0.1:5000/predict", data);
   document.getElementById("result").innerHTML =
-    "<img src='https://www.pythonanywhere.com/user/rrhsj/files/home/rrhsj/mysite/images/Output2.png', class='result-img'/>";
+    "<img src='http://127.0.0.1:5000/static/images/output.png', class='result-img'/>";
   document.getElementById("result").style.background = "#FFFFFF";
   document.getElementById("result").style.border = "None";
 }

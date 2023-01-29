@@ -43,10 +43,10 @@ def predict(colors, latent_dim = 200, outputPath = "images/Output.png"):
     latent_dim = 200
     noise = tf.random.normal([num_examples_to_generate, latent_dim])
     labels = np.array([colors]) / 255
-    model = tf.keras.models.load_model("LandScapeGan.h5")
+    model = tf.keras.models.load_model("LandScapeGanFinal.h5")
     predictions = model([noise, labels], training=False)
     pred = ((predictions[0].numpy() + 1) * 127.5).astype(np.uint8)
-    pred = cv2.detailEnhance(pred, sigma_s=6, sigma_r=1.0)
+    # pred = cv2.detailEnhance(pred, sigma_s=6, sigma_r=1.0)
     rgb = cv2.cvtColor(pred, cv2.COLOR_BGR2RGB)
     im_pil = Image.fromarray(pred)
     colors, _ = extcolors.extract_from_image(im_pil)
@@ -63,7 +63,7 @@ def predict(colors, latent_dim = 200, outputPath = "images/Output.png"):
 #             break
 
     original = cv2.cvtColor(rgb, cv2.COLOR_RGB2BGR)
-    cv2.imwrite(outputPath, original)
+    cv2.imwrite("static/images/output.png", original)
     gray = cv2.cvtColor(rgb, cv2.COLOR_RGB2GRAY)
     gray = cv2.merge([gray,gray,gray])
 
@@ -82,21 +82,25 @@ def predict(colors, latent_dim = 200, outputPath = "images/Output.png"):
     # apply lut to gray
     result = cv2.LUT(gray, lut)
     result2 = cv2.cvtColor(result, cv2.COLOR_RGB2BGR)
-    alpha = 0.8
+    alpha = 0.5
     img3 = np.uint8(result*alpha + original*(1-alpha))
-    cv2.imwrite(outputPath, result2)
-    cv2.imwrite("outputPath.png", img3)
+    cv2.imwrite("static/images/output1.png", result2)
+    cv2.imwrite("static/images/output2.png", img3)
     return outputPath
 
 #create instance of Flask app
+PEOPLE_FOLDER = os.path.join('static', 'images')
 app = Flask(__name__)
+app.config['UPLOAD_FOLDER'] = PEOPLE_FOLDER
+
 
 #decorator 
-@app.route("/")
-def hello():
-    #it is a good idea to include information on how to use your API on the home route
-    text = '''go to /all to see all events'''
-    return text
+@app.route('/')
+@app.route('/index')
+def show_index():
+    full_filename = os.path.join(app.config['UPLOAD_FOLDER'], 'Output.png')
+    return render_template("index.html", user_image = full_filename)
+
   
 @app.route("/predict", methods=['POST'])
 def all():
@@ -109,12 +113,12 @@ def all():
         colorList += list(i)
     colorList.append(random.randint(0, 255))
     filename = predict(colorList)
-    response = jsonify(link = "https://www.pythonanywhere.com/user/rrhsj/files/home/rrhsj/mysite/images/Output2.png")
-    response.headers.add("Access-Control-Allow-Origin", "*")
+    # response = jsonify(link = "http:1/images/Output2.png")
+    # response.headers.add("Access-Control-Allow-Origin", "*")
 
     # return {'c': eval(request.form['colors'])}
     # # print(type(eval(x)))
-    return response
+    return {}
     
 
 
