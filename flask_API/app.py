@@ -1,4 +1,4 @@
-from flask import Flask,json, render_template, request, send_file
+from flask import Flask,json, render_template, request, send_file, jsonify
 import cv2
 import os
 import tensorflow as tf
@@ -100,14 +100,21 @@ def hello():
   
 @app.route("/predict", methods=['POST'])
 def all():
-    colors = eval(request.form['colors'])
+    x = request.data.decode('utf8').replace("'", '"')
+    colors = eval(x)["colors"]
+    # data = json.loads(x)
+    # colors = eval(request.form['colors'])
     colorList = []
     for i in colors:
         colorList += list(i)
     colorList.append(random.randint(0, 255))
     filename = predict(colorList)
-    return send_file(filename, mimetype='image/gif')
+    response = jsonify(link = "https://www.pythonanywhere.com/user/rrhsj/files/home/rrhsj/mysite/images/Output2.png")
+    response.headers.add("Access-Control-Allow-Origin", "*")
+
     # return {'c': eval(request.form['colors'])}
+    # # print(type(eval(x)))
+    return response
     
 
 
