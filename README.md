@@ -1,4 +1,4 @@
-# ColorScaper (Originally called LandscapeGenerator)
+# ColorScape (Originally called LandscapeGenerator)
 
 This project was created for Swamp Hacks on January 27-29, 2023.
 
