@@ -31,6 +31,6 @@ We are using conditional generative adversarial networks (cGANs) to accomplish t
 
 Chintan Acharya
 
-Seoyoung kong
+Seoyoung Kong
 
 Abelardo D. Montalvo
